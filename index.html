@@ -28,18 +28,106 @@
             overflow-x: hidden;
         }
 
-        /* Top Logo */
-        .logo-container {
-            padding: 30px;
+        /* Navigation & Logo */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
             position: absolute;
             top: 0;
-            left: 0;
-            z-index: 10;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
         }
 
         .logo {
-            height: 60px;
+            height: 50px;
             width: auto;
+        }
+
+        /* Desktop Nav */
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--orange);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 101;
+            padding: 10px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--text);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Mobile Nav (hidden by default) */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            height: 100vh;
+            background-color: var(--bg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            transition: right 0.3s ease;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2.5rem;
+            cursor: pointer;
+            color: var(--text);
+            line-height: 1;
         }
 
         /* Hero Section */
@@ -48,14 +136,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px 40px;
+            padding: 100px 40px 40px;
             gap: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .hero-content {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center; 
+            text-align: center;
             flex: 0 1 auto;
         }
 
@@ -79,8 +170,15 @@
             font-size: 2.5rem;
             border-radius: 12px;
             font-weight: 700;
-            transition: transform 0.2s ease, background-color 0.2s ease;
+            transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(245, 166, 75, 0.3);
+            animation: glow 3s infinite;
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px rgba(245, 166, 75, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(245, 166, 75, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(245, 166, 75, 0.4); }
         }
 
         .buy-now-btn:hover {
@@ -98,8 +196,127 @@
         .hero-image {
             max-width: 100%;
             height: auto;
-            max-height: 80vh;
+            max-height: 75vh;
             object-fit: contain;
+            animation: breathe 5s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        /* Tutorial Section */
+        .tutorial-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .tutorial-section h2 {
+            font-family: 'Amatic SC', cursive;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            color: var(--text);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-section h2 {
+            font-family: 'Amatic SC', cursive;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+            text-transform: uppercase;
+            color: var(--text);
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .faq-question {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            padding: 20px 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--orange);
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--orange);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-bottom: 20px;
+        }
+
+        .faq-answer a {
+            color: var(--orange);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .faq-answer a:hover {
+            color: #e8953a;
+            text-decoration: underline;
         }
 
         /* Film Scroll Section */
@@ -156,56 +373,165 @@
             letter-spacing: 0.05em;
         }
 
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .social-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .social-links a:hover {
+            color: var(--orange);
+            transform: translateY(-2px);
+        }
+
+        .social-links a svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
         /* Mobile Responsive */
         @media (max-width: 1024px) {
-            .hero {
-                flex-direction: column;
-                padding: 120px 40px 60px;
-                text-align: center;
-                gap: 60px;
+            header {
+                padding: 20px;
+                position: fixed; /* Keep header visible when menu opens */
+                background-color: rgba(255,255,255,0.9);
+                backdrop-filter: blur(5px);
             }
 
-            .hero-content {
-                align-items: center;
+            nav {
+                display: none; /* Hide desktop nav */
+            }
+
+            .hamburger {
+                display: flex; /* Show hamburger */
+            }
+
+            .hero {
+                flex-direction: column;
+                padding: 100px 20px 40px;
+                text-align: center;
+                gap: 30px;
+                min-height: auto;
             }
 
             .title {
                 font-size: 5rem;
+                margin-bottom: 20px;
             }
 
             .hero-image {
-                max-height: 50vh;
+                max-height: 55vh;
+            }
+
+            .tutorial-section {
+                padding: 60px 20px;
+            }
+            .faq-section {
+                padding: 60px 20px;
             }
         }
 
         @media (max-width: 768px) {
-            .logo-container {
-                padding: 20px;
-            }
             .logo {
                 height: 40px;
             }
+            .hero {
+                padding: 90px 15px 30px;
+                gap: 25px;
+            }
             .title {
                 font-size: 4rem;
+                margin-bottom: 15px;
             }
             .buy-now-btn {
                 font-size: 2rem;
                 padding: 12px 35px;
             }
+            .hero-image {
+                max-height: 60vh;
+            }
             .scroll-item img {
                 height: 300px;
             }
+            .tutorial-section {
+                padding: 40px 15px;
+            }
+            .tutorial-section h2 {
+                font-size: 2.5rem;
+                margin-bottom: 30px;
+            }
+            .faq-section {
+                padding: 40px 15px;
+            }
+            .faq-section h2 {
+                font-size: 2.5rem;
+                margin-bottom: 30px;
+            }
+            .faq-question {
+                font-size: 1rem;
+                padding: 15px 0;
+            }
+        }
+
+        /* Hamburger Animation */
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
         }
     </style>
 </head>
 <body>
 
-    <div class="logo-container">
-        <img src="Assets/logo.png" alt="Narrative Compass" class="logo">
+    <header>
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="Assets/logo.png" alt="Narrative Compass" class="logo">
+            </a>
+        </div>
+        
+        <!-- Desktop Nav -->
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="blog.html">Blog</a>
+        </nav>
+
+        <!-- Hamburger Icon -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- Mobile Nav Menu -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="close-menu" id="closeMenu">&times;</div>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="blog.html">Blog</a>
     </div>
 
     <main>
-        <!-- Hero Section Matching Screenshot -->
+        <!-- Hero Section -->
         <section class="hero" style="max-width: 1400px; margin: 0 auto;">
             <div class="hero-content">
                 <h1 class="title">
@@ -216,6 +542,50 @@
             </div>
             <div class="hero-image-container">
                 <img src="Assets/Angada.png" alt="Angada - Tales of Dharma" class="hero-image">
+            </div>
+        </section>
+
+        <!-- Tutorial Section -->
+        <section class="tutorial-section">
+            <h2>How to Play</h2>
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/C-EG_UfddL0" 
+                    title="Tales of Dharma Tutorial" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">Does my general count towards the diverse sena victory?</div>
+                    <div class="faq-answer">Yes, the class of your general counts towards having a character from each of the six classes.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I attack asuras with my general?</div>
+                    <div class="faq-answer">No, you cannot attack asuras with your general. Only Majors can be nominated to attack asuras.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can anyone play shakuni cards at any point?</div>
+                    <div class="faq-answer">Yes! Any player can play the Shakuni card to support or sabotage any player. Remember a Shakuni card manipulates only the latest dice roll.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do I need to attempt and invoke the major as soon as I introduce a major into my sena?</div>
+                    <div class="faq-answer">Yes, you need to attempt and invoke the major by rolling your dice when you introduce a major into your sena.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I clash the invoking of a major?</div>
+                    <div class="faq-answer">No, Clash cards can only be used against the introduction of a major into the sena, playing a maya card, attaching astras and curses.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">I have more questions?</div>
+                    <div class="faq-answer">Shoot us a DM at <a href="https://www.instagram.com/narrative.compass/" target="_blank" rel="noopener">@narrative.compass</a> on Instagram.</div>
+                </div>
             </div>
         </section>
 
@@ -248,7 +618,54 @@
 
     <footer>
         <p>© 2026 Narrative Compass - Tales of Dharma</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/narrative.compass/" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                <span>@narrative.compass</span>
+            </a>
+        </div>
     </footer>
 
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        const closeMenu = document.getElementById('closeMenu');
+
+        const toggleMenu = () => {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+        };
+
+        hamburger.addEventListener('click', toggleMenu);
+        closeMenu.addEventListener('click', toggleMenu);
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+            });
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

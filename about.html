@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Tales of Dharma</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #000000;
+            --orange: #f5a64b;
+            --gray: #f9f9f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            z-index: 100;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--orange);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 101;
+            padding: 10px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--text);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Mobile Nav */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            height: 100vh;
+            background-color: var(--bg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            transition: right 0.3s ease;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2.5rem;
+            cursor: pointer;
+            color: var(--text);
+            line-height: 1;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            font-family: 'Amatic SC', cursive;
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .content {
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .content p {
+            margin-bottom: 20px;
+        }
+
+        footer {
+            padding: 60px 40px 40px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            letter-spacing: 0.05em;
+        }
+
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .social-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .social-links a:hover {
+            color: var(--orange);
+            transform: translateY(-2px);
+        }
+
+        .social-links a svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        @media (max-width: 1024px) {
+            header {
+                padding: 20px;
+            }
+            nav {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                height: 40px;
+            }
+            h1 {
+                font-size: 3rem;
+            }
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="Assets/logo.png" alt="Narrative Compass" class="logo">
+            </a>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html" class="active">About Us</a>
+            <a href="blog.html">Blog</a>
+        </nav>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <div class="mobile-nav" id="mobileNav">
+        <div class="close-menu" id="closeMenu">&times;</div>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="blog.html">Blog</a>
+    </div>
+
+    <main>
+        <h1>About Narrative Compass</h1>
+        <div class="content">
+            <p>Narrative Compass is a game studio dedicated to transforming stories and experiences into engaging, playable products. We believe that the best way to connect with stories is through interactive play—where players become active participants in the narratives we create.</p>
+            <p>Our mission is to bridge the gap between storytelling and gameplay, crafting products that don't just tell stories, but let you live them. Whether it's through card games, board games, or digital experiences, we design every product with the goal of bringing stories directly into your hands.</p>
+            <p>Tales of Dharma is our flagship strategy card game, where ancient Indian mythology comes alive through strategic gameplay. But it's just the beginning—we're constantly exploring new ways to deliver stories, products, and experiences that resonate with players of all ages.</p>
+            <p>At Narrative Compass, play isn't just entertainment—it's how we share stories, build connections, and create memorable experiences that last long after the game ends.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Narrative Compass - Tales of Dharma</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/narrative.compass/" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                <span>@narrative.compass</span>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        const closeMenu = document.getElementById('closeMenu');
+
+        const toggleMenu = () => {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+        };
+
+        hamburger.addEventListener('click', toggleMenu);
+        closeMenu.addEventListener('click', toggleMenu);
+
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
