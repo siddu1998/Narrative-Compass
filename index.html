@@ -3,30 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Web Page</title>
+    <title>Tales of Dharma</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 40px;
-            background-color: #f4f4f4;
+        :root {
+            --bg: #ffffff;
+            --text: #000000;
+            --orange: #f5a64b;
+            --gray: #f9f9f9;
         }
-        .container {
-            background: white;
-            padding: 20px;
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Top Logo */
+        .logo-container {
+            padding: 30px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 40px;
+            gap: 80px;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex: 0 1 auto;
+        }
+
+        .title {
+            font-family: 'Amatic SC', cursive;
+            font-size: clamp(4rem, 10vw, 8rem);
+            line-height: 0.9;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .buy-now-btn {
+            font-family: 'Amatic SC', cursive;
+            background-color: var(--orange);
+            color: white;
+            text-decoration: none;
+            padding: 15px 45px;
+            font-size: 2.5rem;
+            border-radius: 12px;
+            font-weight: 700;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            box-shadow: 0 4px 15px rgba(245, 166, 75, 0.3);
+        }
+
+        .buy-now-btn:hover {
+            transform: scale(1.05);
+            background-color: #e8953a;
+        }
+
+        .hero-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 0 1 auto;
+        }
+
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        /* Film Scroll Section */
+        .scroll-section {
+            background-color: var(--gray);
+            padding: 60px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .scroll-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .scroll-track {
+            display: flex;
+            width: fit-content;
+            animation: scroll 40s linear infinite;
+        }
+
+        .scroll-item {
+            flex-shrink: 0;
+            padding: 0 20px;
+        }
+
+        .scroll-item img {
+            height: 400px;
+            width: auto;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .scroll-item img:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .scroll-container:hover .scroll-track {
+            animation-play-state: paused;
+        }
+
+        footer {
+            padding: 40px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            letter-spacing: 0.05em;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                flex-direction: column;
+                padding: 120px 40px 60px;
+                text-align: center;
+                gap: 60px;
+            }
+
+            .hero-content {
+                align-items: center;
+            }
+
+            .title {
+                font-size: 5rem;
+            }
+
+            .hero-image {
+                max-height: 50vh;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo-container {
+                padding: 20px;
+            }
+            .logo {
+                height: 40px;
+            }
+            .title {
+                font-size: 4rem;
+            }
+            .buy-now-btn {
+                font-size: 2rem;
+                padding: 12px 35px;
+            }
+            .scroll-item img {
+                height: 300px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Tales of Dhartma</h1>
-        
-
-        <p>Buy Now<a href="https://www.amazon.in/Tales-Dharma-Strategy-Chance-Based/dp/B0G7YCKW2B/">.</p>
+    <div class="logo-container">
+        <img src="Assets/logo.png" alt="Narrative Compass" class="logo">
     </div>
+
+    <main>
+        <!-- Hero Section Matching Screenshot -->
+        <section class="hero" style="max-width: 1400px; margin: 0 auto;">
+            <div class="hero-content">
+                <h1 class="title">
+                    <span>TALES OF</span>
+                    <span>DHARMA</span>
+                </h1>
+                <a href="https://www.amazon.in/Tales-Dharma-Strategy-Chance-Based/dp/B0G7YCKW2B/" class="buy-now-btn">BUY NOW</a>
+            </div>
+            <div class="hero-image-container">
+                <img src="Assets/Angada.png" alt="Angada - Tales of Dharma" class="hero-image">
+            </div>
+        </section>
+
+        <!-- Poster Film Reel -->
+        <section class="scroll-section">
+            <div class="scroll-container">
+                <div class="scroll-track">
+                    <!-- Set 1 -->
+                    <div class="scroll-item"><img src="Assets/Posters/Instagram story - 4.png" alt="Character 1"></div>
+                    <div class="scroll-item"><img src="Assets/Posters/Instagram story - 5.png" alt="Character 2"></div>
+                    <div class="scroll-item"><img src="Assets/Posters/Instagram story - 8.png" alt="Character 3"></div>
+                    <div class="scroll-item"><img src="Assets/Posters/Instagram story - 9.png" alt="Character 4"></div>
+                    <div class="scroll-item"><img src="Assets/Posters/Instagram story - 10.png" alt="Character 5"></div>
+                    <div class="scroll-item"><img src="Assets/Posters/Instagram story - 11.png" alt="Character 6"></div>
+                    <div class="scroll-item"><img src="Assets/Posters/Instagram story - 12.png" alt="Character 7"></div>
+                    <div class="scroll-item"><img src="Assets/Posters/Instagram story - 13.png" alt="Character 8"></div>
+                    <!-- Set 2 for loop -->
+                    <div class="scroll-item"><img src="Assets/Posters/Instagram story - 4.png" alt="Character 1"></div>
+                    <div class="scroll-item"><img src="Assets/Posters/Instagram story - 5.png" alt="Character 2"></div>
+                    <div class="scroll-item"><img src="Assets/Posters/Instagram story - 8.png" alt="Character 3"></div>
+                    <div class="scroll-item"><img src="Assets/Posters/Instagram story - 9.png" alt="Character 4"></div>
+                    <div class="scroll-item"><img src="Assets/Posters/Instagram story - 10.png" alt="Character 5"></div>
+                    <div class="scroll-item"><img src="Assets/Posters/Instagram story - 11.png" alt="Character 6"></div>
+                    <div class="scroll-item"><img src="Assets/Posters/Instagram story - 12.png" alt="Character 7"></div>
+                    <div class="scroll-item"><img src="Assets/Posters/Instagram story - 13.png" alt="Character 8"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Narrative Compass - Tales of Dharma</p>
+    </footer>
 
 </body>
 </html>
