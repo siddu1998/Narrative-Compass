@@ -223,6 +223,28 @@
             color: var(--text);
         }
 
+        .videos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .video-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-wrapper h3 {
+            font-family: 'Amatic SC', cursive;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: var(--text);
+        }
+
         .video-container {
             position: relative;
             width: 100%;
@@ -231,8 +253,6 @@
             overflow: hidden;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            max-width: 900px;
-            margin: 0 auto;
         }
 
         .video-container iframe {
@@ -439,6 +459,10 @@
             .tutorial-section {
                 padding: 60px 20px;
             }
+            .videos-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
             .faq-section {
                 padding: 60px 20px;
             }
@@ -548,13 +572,29 @@
         <!-- Tutorial Section -->
         <section class="tutorial-section">
             <h2>How to Play</h2>
-            <div class="video-container">
-                <iframe 
-                    src="https://www.youtube.com/embed/C-EG_UfddL0" 
-                    title="Tales of Dharma Tutorial" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
+            <div class="videos-grid">
+                <div class="video-wrapper">
+                    <h3>Standard Tutorial</h3>
+                    <div class="video-container">
+                        <iframe 
+                            src="https://www.youtube.com/embed/C-EG_UfddL0" 
+                            title="Tales of Dharma Tutorial" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                <div class="video-wrapper">
+                    <h3>Kids Edition (6-8 years old)</h3>
+                    <div class="video-container">
+                        <iframe 
+                            src="https://www.youtube.com/embed/v8ktSEakyoY" 
+                            title="Tales of Dharma Kids Edition Instructions" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
             </div>
         </section>
 
