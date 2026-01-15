@@ -225,7 +225,7 @@
 
         .videos-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
@@ -460,8 +460,8 @@
                 padding: 60px 20px;
             }
             .videos-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
             }
             .faq-section {
                 padding: 60px 20px;
@@ -496,6 +496,10 @@
             .tutorial-section h2 {
                 font-size: 2.5rem;
                 margin-bottom: 30px;
+            }
+            .videos-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
             .faq-section {
                 padding: 40px 15px;
@@ -594,6 +598,21 @@
                             allowfullscreen>
                         </iframe>
                     </div>
+                </div>
+                <div class="video-wrapper">
+                    <h3>Tales of Dharma+ (8+ years old)</h3>
+                    <div class="video-container">
+                        <iframe 
+                            src="https://www.youtube.com/embed/ufR-eih-ZUY" 
+                            title="Tales of Dharma+ Instructions" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                <!-- Empty placeholder for future video -->
+                <div class="video-wrapper">
+                    <!-- Reserved for future video -->
                 </div>
             </div>
         </section>
