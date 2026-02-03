@@ -387,6 +387,34 @@
             fill: currentColor;
         }
 
+        .errata-notice {
+            display: inline-flex;
+            align-items: flex-start;
+            gap: 10px;
+            background-color: #fff8e6;
+            border: 1px solid #f5a64b;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-top: 25px;
+            max-width: 500px;
+            text-align: left;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .errata-notice svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--orange);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .errata-notice strong {
+            color: var(--orange);
+        }
+
         /* FAQ Section */
         .faq-section {
             padding: 80px 20px;
@@ -811,6 +839,12 @@
                 </svg>
                 Download Full Booklet
             </a>
+            <div class="errata-notice">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                </svg>
+                <span><strong>Errata (Physical Copies):</strong> The printed instruction booklet states 117 cards with regular backs, but the correct count is <strong>114 cards</strong> with regular backs.</span>
+            </div>
         </section>
 
         <!-- FAQ Section -->
